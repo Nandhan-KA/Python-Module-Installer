@@ -90,6 +90,9 @@ network_modules = [
 build_modules = [
     'pep517', 'setuptools', 'build', 'wheel', 'pytoml', 'cmake'
 ]
+jupyter_modules = [
+    'jupyter'
+]
 
 
 def installer():
@@ -114,6 +117,7 @@ def installer():
             7. Full Stack Development Modules
             8. Network Modules
             9. Build Modules
+            10.Jupyter Modules
             """)
 
             selected_option = int(
@@ -130,6 +134,7 @@ def installer():
                 'Full Stack Development Modules',
                 'Network Modules',
                 'Build Modules',
+                'Jupyter Modules'
             ]
 
             selected_module_type = module_types[selected_option]
