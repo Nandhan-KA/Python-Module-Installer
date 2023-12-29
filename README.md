@@ -18,10 +18,10 @@ This is a Python script that allows you to interactively install various Python 
 1. Clone the repository to your local machine:
     git clone https://github.com/YourUsername/Python-Module-Installer.git
    
-3. Navigate to the project directory:
+2. Navigate to the project directory:
     cd Python-Module-Installer
    
-5. Run the Program:
+3. Run the Program:
    python Module_Installer.py
 
 "feel free to Modify"
