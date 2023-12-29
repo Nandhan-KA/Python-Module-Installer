@@ -22,7 +22,7 @@ This is a Python script that allows you to interactively install various Python 
     cd Python-Module-Installer
    
 5. Run the Program:
-   python installer.py
+   python Module_Installer.py
 
 "feel free to Modify"
 
