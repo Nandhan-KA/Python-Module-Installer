@@ -68,7 +68,7 @@ science_modules = [
 ]
 
 computer_vision_modules = [
-    'opencv-python', 'Pillow', 'imageio', 'pytesseract', 'pyautogui', 'pyzbar',
+    'opencv-python', 'Pillow', 'imageio', 'pytesseract', 'pyautogui', 'pyzbar', 'dlib'
 ]
 
 machine_learning_modules = [
