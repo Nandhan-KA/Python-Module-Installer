@@ -3,10 +3,9 @@ import getpass
 import sys
 import urllib.request
 from datetime import datetime
-from rich.console import Console
-user = getpass.getuser()
-console = Console()
 
+
+user = getpass.getuser()
 
 def internet(ping="https://google.com"):
     try:
@@ -26,6 +25,9 @@ def os_platform():
 
 
 def banner():
+    from rich.console import Console
+    
+    console = Console()
     console.print(
         "  \ |   \    \ | _ \ |  |   \    \ |    |  /",
         " .  |  _ \  .  | |  |__ |  _ \  .  |    . <  ",
