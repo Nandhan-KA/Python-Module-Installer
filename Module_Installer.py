@@ -3,7 +3,10 @@ import getpass
 import sys
 import urllib.request
 from datetime import datetime
-
+import subprocess
+import ctypes
+import webbrowser
+from rich.console import Console
 
 user = getpass.getuser()
 
@@ -14,7 +17,6 @@ def internet(ping="https://google.com"):
     except:
         return False
 
-
 def os_platform():
     platform = {
         'win32': 'Windows'
@@ -23,37 +25,113 @@ def os_platform():
         return sys.platform
     return platform[sys.platform]
 
-
 def banner():
-    from rich.console import Console
-    
     console = Console()
-    console.print(
-        "  \ |   \    \ | _ \ |  |   \    \ |    |  /",
-        " .  |  _ \  .  | |  |__ |  _ \  .  |    . <  ",
-        "_|\_|_/  _\_|\_|___/_| _|_/  _\_|\_|   _|\_\ ",
 
-        "Creator: Nandhan K",
-        "Github: @github.com/Nandhan-KA",
-        sep="\n",
-        style="bold white"
-    )
+    ascii_art = """
+              \ |   \    \ | _ \ |  |   \    \ |    |  / 
+             .  |  _ \  .  | |  |__ |  _ \  .  |    . <  
+            _|\_|_/  _\_|\_|___/_| _|_/  _\_|\_|   _|\_\ 
+            """
+    console.print(ascii_art, style="bold yellow")
+    console.print("Creator: Nandhan K", style="bold cyan")
+    console.print("Github: @github.com/Nandhan-KA", style="bold yellow")
 
 
 def sys_info():
     print("System Platform:", sys.platform)
     print("Python verion:", sys.version)
 
-
 def clear():
     return os.system('cls')
-
 
 def log_mod(module_type, module_name, python_folder):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_entry = f"{timestamp} - Installed {module_name} from {module_type} in {python_folder}"
     with open("module_installation_log.txt", "a") as log_file:
         log_file.write(log_entry + "\n")
+
+def install_vscode_build_tools():
+    def run_command(command):
+        result = subprocess.run(command, shell=True)
+        return result.returncode
+
+    def install_chocolatey():
+        choco_install_cmd = (
+            '@"%"SystemRoot%"\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" '
+            '-NoProfile -InputFormat None -ExecutionPolicy Bypass -Command '
+            '"iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))" '
+            '&& SET "PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin"'
+        )
+        return run_command(choco_install_cmd)
+
+    def install_vs_build_tools():
+        vs_build_tools_cmd = 'choco install -y visualstudio2019buildtools'
+        return run_command(vs_build_tools_cmd)
+
+    try:
+        is_admin = os.getuid() == 0
+    except AttributeError:
+        is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+
+    if not is_admin:
+        print("This script requires administrator privileges. Please run as an administrator.")
+        return False
+
+    choco_installed = subprocess.run("choco -v", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if choco_installed.returncode != 0:
+        if install_chocolatey() != 0:
+            print("Failed to install Chocolatey.")
+            return False
+
+    if install_vs_build_tools() != 0:
+        print("Failed to install Visual Studio Build Tools.")
+        return False
+
+    print("Installation of Visual Studio Build Tools completed successfully.")
+    return True
+
+def install_rust():
+    def run_command(command):
+        result = subprocess.run(command, shell=True)
+        return result.returncode
+
+    def download_rust_installer():
+        url = "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe"
+        installer_path = os.path.join(os.getenv('TEMP'), 'rustup-init.exe')
+        try:
+            urllib.request.urlretrieve(url, installer_path)
+            return installer_path
+        except Exception as e:
+            print(f"Failed to download Rust installer: {e}")
+            return None
+
+    def install_rustup(installer_path):
+        rustup_install_cmd = f'"{installer_path}" -y'
+        return run_command(rustup_install_cmd)
+
+    try:
+        is_admin = os.getuid() == 0
+    except AttributeError:
+        is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+
+    if not is_admin:
+        print("This script requires administrator privileges. Please run as an administrator.")
+        return False
+
+    installer_path = download_rust_installer()
+    if not installer_path:
+        print("Failed to download Rust installer. Opening the Rust installation webpage.")
+        webbrowser.open('https://www.rust-lang.org/tools/install')
+        return False
+
+    if install_rustup(installer_path) != 0:
+        print("Failed to install Rust. Opening the Rust installation webpage.")
+        webbrowser.open('https://www.rust-lang.org/tools/install')
+        return False
+
+    print("Installation of Rust completed successfully.")
+    return True
 
 # Module Lists
 
@@ -98,7 +176,7 @@ network_modules = [
 
 build_modules = [
     'pep517', 'setuptools', 'build', 'wheel', 'pytoml', 'cmake',
-    'pyproject.toml', 'ninja', 'meson', 'scons', 'bazel', 'autoconf', 'automake', 'libtool'
+    'pyproject.toml', 'ninja', 'meson', 'scons', 'bazel', 'autoconf', 'automake', 'libtool', 'rust'
 ]
 
 jupyter_modules = [
@@ -106,56 +184,36 @@ jupyter_modules = [
     'notebook', 'jupyterlab', 'nbconvert', 'nbformat', 'ipywidgets', 'ipykernel', 'voila', 'jupyter_contrib_nbextensions', 'jupyter_dash', 'jupyter_bokeh', 'jupytext', 'jupyterhub', 'jupyter_client', 'qtconsole'
 ]
 
-
 def installer():
     if internet():
         try:
             import rich
         except ModuleNotFoundError:
             os.system('pip install rich')
-            
+        finally:
+            from rich.console import Console
+
         clear()
+        banner()
+        sys_info()
+
+        module_types = [
+            'Basic Modules', 'Advanced Modules', 'Science Modules', 'Computer Vision Modules',
+            'Machine Learning Modules', 'Deep Learning Modules', 'Full Stack Development Modules',
+            'Network Modules', 'Build Modules', 'Jupyter Modules'
+        ]
+
+        print("\nPlease select the type of modules you want to install:\n")
+        for i, module_type in enumerate(module_types, 1):
+            print(f"{i}. {module_type}")
+
         try:
-            if os_platform() == "Windows":
-                pass
-            else:
-                print("This software is only for Windows. Exiting.")
-                sys.exit()
-            banner()
+            selected_module_type = int(
+                input("\nEnter the number corresponding to your choice: "))
 
-            print("""
-            1. Basic Modules
-            2. Advanced Modules
-            3. Science Modules
-            4. Computer Vision Modules
-            5. Machine Learning Modules
-            6. Deep Learning Modules
-            7. Full Stack Development Modules
-            8. Network Modules
-            9. Build Modules
-            10.Jupyter Modules
-            """)
-
-            selected_option = int(
-                input("Enter the number corresponding to the module type: "))
-            clear()
-            module_types = [
-                None,
-                'Basic Modules',
-                'Advanced Modules',
-                'Science Modules',
-                'Computer Vision Modules',
-                'Machine Learning Modules',
-                'Deep Learning Modules',
-                'Full Stack Development Modules',
-                'Network Modules',
-                'Build Modules',
-                'Jupyter Modules'
-            ]
-
-            selected_module_type = module_types[selected_option]
-
-            if selected_module_type:
+            if 1 <= selected_module_type <= len(module_types):
+                clear()
+                selected_module_type = module_types[selected_module_type - 1]
                 print(f"\nSelected Module Type: {selected_module_type}")
                 print("Modules:")
                 modules = globals()[
@@ -181,6 +239,27 @@ def installer():
                         python_folder = str(*versions)
 
                     for module in modules:
+                        if module == 'dlib':
+                            print("Module dlib has to be installed after you have installed visual studio build tools")
+                            x = input("Do you want to install VS Build Tools? (y/n): ").lower()
+                            if x == "y":
+                                if install_vscode_build_tools():
+                                    print("Build tools installed successfully.")
+                                else:
+                                    print("Failed to install build tools.")
+                                    continue  
+                        
+                        if module == 'rust':
+                            print("Module rust needs to be installed separately.")
+                            x = input("Do you want to install Rust? (y/n): ").lower()
+                            if x == "y":
+                                if install_rust():
+                                    print("Rust installed successfully.")
+                                else:
+                                    print("Failed to install Rust. Opening the Rust installation webpage.")
+                                    webbrowser.open('https://www.rust-lang.org/tools/install')
+                                    break  
+
                         clear()
                         command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {module}"
                         os.system(command)
@@ -194,6 +273,12 @@ def installer():
                     elif more.lower() in ["yes", "y"]:
                         installer()
                 else:
+                    print("Modules:")
+                    modules = globals()[
+                        selected_module_type.lower().replace(" ", "_")]
+                    for i, module in enumerate(modules, 1):
+                        print(f"{i}. {module}")
+
                     module_index = int(input(
                         "Enter the number corresponding to the module to install (type '0' to exit): "))
 
@@ -215,6 +300,28 @@ def installer():
                             input("Select your Python folder (1 or 2): ")) - 1]
                     else:
                         python_folder = str(*versions)
+                    
+                    if selected_module == 'dlib':
+                        print("Module dlib has to be installed after you have installed visual studio build tools")
+                        x = input("Do you want to install VS Build Tools? (y/n): ").lower()
+                        if x == "y":
+                            if install_vscode_build_tools():
+                                print("Build tools installed successfully.")
+                            else:
+                                print("Failed to install build tools.")
+                                sys.exit()  
+                    
+                    if selected_module == 'rust':
+                        print("Module rust needs to be installed separately.")
+                        x = input("Do you want to install Rust? (y/n): ").lower()
+                        if x == "y":
+                            if install_rust():
+                                print("Rust installed successfully.")
+                            else:
+                                print("Failed to install Rust. Opening the Rust installation webpage.")
+                                webbrowser.open('https://www.rust-lang.org/tools/install')
+                                sys.exit()  
+
                     command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {selected_module}"
                     os.system(command)
 
@@ -233,7 +340,6 @@ def installer():
             installer()
     else:
         print("No Internet Connection")
-
 
 if __name__ == '__main__':
     installer()
