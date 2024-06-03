@@ -58,8 +58,6 @@ def banner_nointernet():
     console.print("\t Github: @github.com/Nandhan-KA", style="bold yellow")
     console.print(" \n \t This Project Requires Internet Connection 🌐 ", style="bold yellow")
 
-import sys
-import subprocess
 
 def sys_info():
     console = Console()
@@ -397,10 +395,6 @@ def installer():
     
     else:
         banner_nointernet()
-
-
-def run():
-    installer()
 
 def install_basic_modules():
     if internet() and sys.platform == 'win32':
@@ -1390,4 +1384,6 @@ def install_jupyter_modules():
     
     else:
         banner_nointernet()
-
+        
+def run():
+    installer()
