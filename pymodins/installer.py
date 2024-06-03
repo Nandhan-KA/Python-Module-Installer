@@ -58,7 +58,6 @@ def banner_nointernet():
     console.print("\t Github: @github.com/Nandhan-KA", style="bold yellow")
     console.print(" \n \t This Project Requires Internet Connection 🌐 ", style="bold yellow")
 
-
 def sys_info():
     console = Console()
     console.print("System Platform:", sys.platform, style="bold white")
@@ -222,20 +221,88 @@ jupyter_modules = [
     'notebook', 'jupyterlab', 'nbconvert', 'nbformat', 'ipywidgets', 'ipykernel', 'voila', 'jupyter_contrib_nbextensions', 'jupyter_dash', 'jupyter_bokeh', 'jupytext', 'jupyterhub', 'jupyter_client', 'qtconsole'
 ]
 
-# Module Types
+data_analysis_modules = [
+    'pandas', 'numpy', 'dask', 'scipy', 'statsmodels', 'vaex', 'modin', 'pyarrow', 'koalas', 'polars',
+    'datatable', 'blaze', 'turicreate', 'rapidf', 'intake', 'seaborn', 'matplotlib', 'plotly', 'ggplot', 'bokeh', 
+    'altair', 'cufflinks'
+]
+
+data_visualization_modules = [
+    'matplotlib', 'seaborn', 'plotly', 'bokeh', 'altair', 'holoviews', 'geopandas', 'folium', 'chart-studio', 'pyecharts',
+    'hvplot', 'pygal', 'missingno', 'pandas_profiling', 'pywaffle', 'yellowbrick', 'networkx', 'graphviz', 'dash', 
+    'tableau', 'vispy', 'toyplot'
+]
+
+natural_language_processing_modules = [
+    'nltk', 'spacy', 'transformers', 'flair', 'gensim', 'textblob', 'vaderSentiment', 'polyglot', 'stanfordnlp', 'allennlp',
+    'fairseq', 'fasttext', 'openai-gpt', 'bert-score', 'sentence-transformers', 'summa', 'sumy', 'pattern', 
+    'pysentimiento', 'pyphen', 'simpletransformers'
+]
+
+web_development_modules = [
+    'django', 'flask', 'fastapi', 'pyramid', 'bottle', 'cherryPy', 'tornado', 'web2py', 'falcon', 'hug', 
+    'starlette', 'responder', 'sanic', 'socketio', 'asgiref', 'webapp2', 'aiohttp', 'masonite', 'clastic', 
+    'python-decouple', 'whitenoise', 'gunicorn', 'uwsgi', 'waitress'
+]
+
+database_modules = [
+    'sqlalchemy', 'pymysql', 'psycopg2', 'sqlite3', 'mongodb', 'pymongo', 'tinydb', 'couchdb', 'cassandra-driver', 'happybase',
+    'redis', 'aioredis', 'aiomysql', 'pony', 'orm', 'orator', 'dataset', 'datasets', 'peewee', 'sqlalchemy-migrate', 'yoyo-migrations'
+]
+
+cybersecurity_modules = [
+    'cryptography', 'pycryptodome', 'paramiko', 'scapy', 'pyshark', 'dnspython', 'impacket', 'requests', 'flask-security', 
+    'django-guardian', 'mitmproxy', 'pyOpenSSL', 'certifi', 'ssl', 'keyring', 'hpack', 'brotli', 'hashlib', 'python-nmap', 
+    'jinja2', 'pyjwt', 'passlib'
+]
+
+cloud_computing_modules = [
+    'boto3', 'google-cloud', 'azure', 'awscli', 'cloudpickle', 'cloudmesh', 'apache-libcloud', 'terraform', 'pulumi', 'ansible',
+    'kubernetes', 'docker', 'docker-compose', 'pywren', 'serverless', 'salt', 'pyinfra', 'cloudinary', 'paramiko', 'cloudant', 
+    'python-openstackclient', 'troposphere'
+]
+
+devops_modules = [
+    'ansible', 'jenkins', 'travis-ci', 'git', 'docker', 'docker-compose', 'kubernetes', 'vagrant', 'puppet', 'chef', 
+    'salt', 'fabric', 'terraform', 'consul', 'nomad', 'packer', 'helm', 'spinnaker', 'circleci', 'bamboo', 'gitlab', 
+    'gitea', 'hugo', 'mkdocs', 'pre-commit', 'pyinfra'
+]
+
+big_data_modules = [
+    'pyspark', 'hadoop', 'kafka', 'dask', 'ray', 'modin', 'polars', 'koalas', 'pyarrow', 'fastparquet', 
+    'pydoop', 'pyhive', 'mrjob', 'h5py', 'tables', 'zarr', 'petastorm', 'cudf', 'datashader', 'blaze', 
+    'turicreate', 'pandas', 'pandas-profiling'
+]
+
+mobile_development_modules = [
+    'kivy', 'beeware', 'pyqt', 'tkinter', 'flutter', 'react-native', 'pyjnius', 'sl4a', 'chaquopy', 'pybee', 
+    'pyto', 'rubicon-java', 'toga', 'pylibpd', 'pyobjus', 'pgs4a', 'plyer', 'buildozer', 'briefcase', 
+    'pyinstaller', 'cx_freeze', 'nuitka', 'py2app', 'py2exe'
+]
+
 module_types = [
-        None,
-        'Basic Modules',
-        'Advanced Modules',
-        'Science Modules',
-        'Computer Vision Modules',
-        'Machine Learning Modules',
-        'Deep Learning Modules',
-        'Full Stack Development Modules',
-        'Network Modules',
-        'Build Modules',
-        'Jupyter Modules'
-    ]
+    None,
+    'Basic Modules',
+    'Advanced Modules',
+    'Science Modules',
+    'Computer Vision Modules',
+    'Machine Learning Modules',
+    'Deep Learning Modules',
+    'Full Stack Development Modules',
+    'Network Modules',
+    'Build Modules',
+    'Jupyter Modules',
+    'Data Analysis Modules',
+    'Data Visualization Modules',
+    'Natural Language Processing Modules',
+    'Web Development Modules',
+    'Database Modules',
+    'Cybersecurity Modules',
+    'Cloud Computing Modules',
+    'DevOps Modules',
+    'Big Data Modules',
+    'Mobile Development Modules'
+]
 
 def installer():
     if internet() and sys.platform == 'win32':
@@ -685,7 +752,6 @@ def install_deeplearning_modules():
         sys_info()
         selected_option = 6
         
-
         selected_module_type = module_types[selected_option]
 
         if selected_module_type:
@@ -770,7 +836,6 @@ def install_deeplearning_modules():
     
     else:
         banner_nointernet()
-
 
 def install_fullstack_modules():
     if internet():
@@ -873,7 +938,6 @@ def install_science_modules():
         sys_info()
         selected_option = 3
         
-
         selected_module_type = module_types[selected_option]
 
         if selected_module_type:
@@ -958,8 +1022,7 @@ def install_science_modules():
     
     else:
         banner_nointernet()
-
-      
+    
 def install_computervision_modules():
     if internet():
         upgrade_pip()
