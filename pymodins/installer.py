@@ -221,28 +221,10 @@ jupyter_modules = [
     'notebook', 'jupyterlab', 'nbconvert', 'nbformat', 'ipywidgets', 'ipykernel', 'voila', 'jupyter_contrib_nbextensions', 'jupyter_dash', 'jupyter_bokeh', 'jupytext', 'jupyterhub', 'jupyter_client', 'qtconsole'
 ]
 
-data_analysis_modules = [
-    'pandas', 'numpy', 'dask', 'scipy', 'statsmodels', 'vaex', 'modin', 'pyarrow', 'koalas', 'polars',
-    'datatable', 'blaze', 'turicreate', 'rapidf', 'intake', 'seaborn', 'matplotlib', 'plotly', 'ggplot', 'bokeh', 
-    'altair', 'cufflinks'
-]
-
 data_visualization_modules = [
     'matplotlib', 'seaborn', 'plotly', 'bokeh', 'altair', 'holoviews', 'geopandas', 'folium', 'chart-studio', 'pyecharts',
     'hvplot', 'pygal', 'missingno', 'pandas_profiling', 'pywaffle', 'yellowbrick', 'networkx', 'graphviz', 'dash', 
     'tableau', 'vispy', 'toyplot'
-]
-
-natural_language_processing_modules = [
-    'nltk', 'spacy', 'transformers', 'flair', 'gensim', 'textblob', 'vaderSentiment', 'polyglot', 'stanfordnlp', 'allennlp',
-    'fairseq', 'fasttext', 'openai-gpt', 'bert-score', 'sentence-transformers', 'summa', 'sumy', 'pattern', 
-    'pysentimiento', 'pyphen', 'simpletransformers'
-]
-
-web_development_modules = [
-    'django', 'flask', 'fastapi', 'pyramid', 'bottle', 'cherryPy', 'tornado', 'web2py', 'falcon', 'hug', 
-    'starlette', 'responder', 'sanic', 'socketio', 'asgiref', 'webapp2', 'aiohttp', 'masonite', 'clastic', 
-    'python-decouple', 'whitenoise', 'gunicorn', 'uwsgi', 'waitress'
 ]
 
 database_modules = [
@@ -274,11 +256,7 @@ big_data_modules = [
     'turicreate', 'pandas', 'pandas-profiling'
 ]
 
-mobile_development_modules = [
-    'kivy', 'beeware', 'pyqt', 'tkinter', 'flutter', 'react-native', 'pyjnius', 'sl4a', 'chaquopy', 'pybee', 
-    'pyto', 'rubicon-java', 'toga', 'pylibpd', 'pyobjus', 'pgs4a', 'plyer', 'buildozer', 'briefcase', 
-    'pyinstaller', 'cx_freeze', 'nuitka', 'py2app', 'py2exe'
-]
+
 
 module_types = [
     None,
@@ -292,16 +270,12 @@ module_types = [
     'Network Modules',
     'Build Modules',
     'Jupyter Modules',
-    'Data Analysis Modules',
     'Data Visualization Modules',
-    'Natural Language Processing Modules',
-    'Web Development Modules',
     'Database Modules',
     'Cybersecurity Modules',
     'Cloud Computing Modules',
     'DevOps Modules',
     'Big Data Modules',
-    'Mobile Development Modules'
 ]
 
 def installer():
@@ -310,12 +284,24 @@ def installer():
         clear()
         banner()
         sys_info()
-        
         module_types = [
-            'Basic Modules', 'Advanced Modules', 'Science Modules', 'Computer Vision Modules',
-            'Machine Learning Modules', 'Deep Learning Modules', 'Full Stack Development Modules',
-            'Network Modules', 'Build Modules', 'Jupyter Modules'
-        ]
+    'Basic Modules',
+    'Advanced Modules',
+    'Science Modules',
+    'Computer Vision Modules',
+    'Machine Learning Modules',
+    'Deep Learning Modules',
+    'Full Stack Development Modules',
+    'Network Modules',
+    'Build Modules',
+    'Jupyter Modules',
+    'Data Visualization Modules',
+    'Database Modules',
+    'Cybersecurity Modules',
+    'Cloud Computing Modules',
+    'DevOps Modules',
+    'Big Data Modules',
+]
 
         print("\nPlease select the type of modules you want to install:\n")
         for i, module_type in enumerate(module_types, 1):
@@ -457,7 +443,8 @@ def installer():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
         return
     
     else:
@@ -550,9 +537,9 @@ def install_basic_modules():
                     
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
-    
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
     else:
         banner_nointernet()
 
@@ -644,9 +631,9 @@ def install_advanced_modules():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
-    
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
     else:
         banner_nointernet()
 
@@ -738,9 +725,9 @@ def install_machinelearning_modules():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
-    
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
     else:
         banner_nointernet()
 
@@ -831,9 +818,9 @@ def install_deeplearning_modules():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
-    
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+            
     else:
         banner_nointernet()
 
@@ -924,9 +911,9 @@ def install_fullstack_modules():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
-    
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+            
     else:
         banner_nointernet()
 
@@ -1017,9 +1004,9 @@ def install_science_modules():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
-    
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
     else:
         banner_nointernet()
     
@@ -1133,9 +1120,9 @@ def install_computervision_modules():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
-    
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
     else:
         banner_nointernet()
 
@@ -1227,8 +1214,9 @@ def install_network_modules():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
     
     else:
         banner_nointernet()
@@ -1351,9 +1339,9 @@ def install_build_modules():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
-    
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
     else:
         banner_nointernet()
 
@@ -1442,11 +1430,576 @@ def install_jupyter_modules():
             
     elif internet() and sys.platform == "linux":
         banner()
-        Console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
-        return
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
     
     else:
         banner_nointernet()
-        
+   
+def install_data_visualization_modules():
+    if internet() and sys.platform == 'win32':
+        upgrade_pip()
+        banner()
+        sys_info()
+        selected_option = 11
+
+        selected_module_type = module_types[selected_option]
+
+        if selected_module_type:
+            print(f"\nSelected Module Type: {selected_module_type}")
+            print("Modules:")
+            modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+            for i, module in enumerate(modules, 1):
+                print(f"{i}. {module}")
+
+            install_option = input(
+                "Do you want to install all modules in this section? (Yes/No): ").lower()
+            clear()
+            if install_option in ["yes", "y"]:
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+
+                for module in modules:
+                    clear()
+                    command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {module}"
+                    os.system(command)
+                    log_mod(selected_module_type, module, python_folder)
+
+                print("\nAll modules installed successfully.")
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+            else:
+                print("Modules:")
+                modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+                for i, module in enumerate(modules, 1):
+                    print(f"{i}. {module}")
+
+                module_index = int(input(
+                    "Enter the number corresponding to the module to install (type '0' to exit): "))
+
+                if module_index == 0:
+                    print(
+                        "\nReload this program to install new modules of Python.")
+                    sys.exit()
+
+                selected_module = modules[module_index - 1]
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+                command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {selected_module}"
+                os.system(command)
+
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+                    
+    elif internet() and sys.platform == "linux":
+        banner()
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
+    else:
+        banner_nointernet()
+
+
+def install_database_modules():
+    if internet() and sys.platform == 'win32':
+        upgrade_pip()
+        banner()
+        sys_info()
+        selected_option = 12
+
+        selected_module_type = module_types[selected_option]
+
+        if selected_module_type:
+            print(f"\nSelected Module Type: {selected_module_type}")
+            print("Modules:")
+            modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+            for i, module in enumerate(modules, 1):
+                print(f"{i}. {module}")
+
+            install_option = input(
+                "Do you want to install all modules in this section? (Yes/No): ").lower()
+            clear()
+            if install_option in ["yes", "y"]:
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+
+                for module in modules:
+                    clear()
+                    command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {module}"
+                    os.system(command)
+                    log_mod(selected_module_type, module, python_folder)
+
+                print("\nAll modules installed successfully.")
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+            else:
+                print("Modules:")
+                modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+                for i, module in enumerate(modules, 1):
+                    print(f"{i}. {module}")
+
+                module_index = int(input(
+                    "Enter the number corresponding to the module to install (type '0' to exit): "))
+
+                if module_index == 0:
+                    print(
+                        "\nReload this program to install new modules of Python.")
+                    sys.exit()
+
+                selected_module = modules[module_index - 1]
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+                command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {selected_module}"
+                os.system(command)
+
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+                    
+    elif internet() and sys.platform == "linux":
+        banner()
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
+    else:
+        banner_nointernet()
+
+
+
+def install_CyberSecurity_modules():
+    if internet() and sys.platform == 'win32':
+        upgrade_pip()
+        banner()
+        sys_info()
+        selected_option = 13
+
+        selected_module_type = module_types[selected_option]
+
+        if selected_module_type:
+            print(f"\nSelected Module Type: {selected_module_type}")
+            print("Modules:")
+            modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+            for i, module in enumerate(modules, 1):
+                print(f"{i}. {module}")
+
+            install_option = input(
+                "Do you want to install all modules in this section? (Yes/No): ").lower()
+            clear()
+            if install_option in ["yes", "y"]:
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+
+                for module in modules:
+                    clear()
+                    command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {module}"
+                    os.system(command)
+                    log_mod(selected_module_type, module, python_folder)
+
+                print("\nAll modules installed successfully.")
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+            else:
+                print("Modules:")
+                modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+                for i, module in enumerate(modules, 1):
+                    print(f"{i}. {module}")
+
+                module_index = int(input(
+                    "Enter the number corresponding to the module to install (type '0' to exit): "))
+
+                if module_index == 0:
+                    print(
+                        "\nReload this program to install new modules of Python.")
+                    sys.exit()
+
+                selected_module = modules[module_index - 1]
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+                command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {selected_module}"
+                os.system(command)
+
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+                    
+    elif internet() and sys.platform == "linux":
+        banner()
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
+    else:
+        banner_nointernet()
+
+
+def install_cloudcomputing_modules():
+    if internet() and sys.platform == 'win32':
+        upgrade_pip()
+        banner()
+        sys_info()
+        selected_option = 14
+
+        selected_module_type = module_types[selected_option]
+
+        if selected_module_type:
+            print(f"\nSelected Module Type: {selected_module_type}")
+            print("Modules:")
+            modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+            for i, module in enumerate(modules, 1):
+                print(f"{i}. {module}")
+
+            install_option = input(
+                "Do you want to install all modules in this section? (Yes/No): ").lower()
+            clear()
+            if install_option in ["yes", "y"]:
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+
+                for module in modules:
+                    clear()
+                    command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {module}"
+                    os.system(command)
+                    log_mod(selected_module_type, module, python_folder)
+
+                print("\nAll modules installed successfully.")
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+            else:
+                print("Modules:")
+                modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+                for i, module in enumerate(modules, 1):
+                    print(f"{i}. {module}")
+
+                module_index = int(input(
+                    "Enter the number corresponding to the module to install (type '0' to exit): "))
+
+                if module_index == 0:
+                    print(
+                        "\nReload this program to install new modules of Python.")
+                    sys.exit()
+
+                selected_module = modules[module_index - 1]
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+                command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {selected_module}"
+                os.system(command)
+
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+                    
+    elif internet() and sys.platform == "linux":
+        banner()
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
+    else:
+        banner_nointernet()
+
+
+def install_devops_modules():
+    if internet() and sys.platform == 'win32':
+        upgrade_pip()
+        banner()
+        sys_info()
+        selected_option = 15
+
+        selected_module_type = module_types[selected_option]
+
+        if selected_module_type:
+            print(f"\nSelected Module Type: {selected_module_type}")
+            print("Modules:")
+            modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+            for i, module in enumerate(modules, 1):
+                print(f"{i}. {module}")
+
+            install_option = input(
+                "Do you want to install all modules in this section? (Yes/No): ").lower()
+            clear()
+            if install_option in ["yes", "y"]:
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+
+                for module in modules:
+                    clear()
+                    command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {module}"
+                    os.system(command)
+                    log_mod(selected_module_type, module, python_folder)
+
+                print("\nAll modules installed successfully.")
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+            else:
+                print("Modules:")
+                modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+                for i, module in enumerate(modules, 1):
+                    print(f"{i}. {module}")
+
+                module_index = int(input(
+                    "Enter the number corresponding to the module to install (type '0' to exit): "))
+
+                if module_index == 0:
+                    print(
+                        "\nReload this program to install new modules of Python.")
+                    sys.exit()
+
+                selected_module = modules[module_index - 1]
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+                command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {selected_module}"
+                os.system(command)
+
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+                    
+    elif internet() and sys.platform == "linux":
+        banner()
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
+    else:
+        banner_nointernet()
+
+
+def install_bigdata_modules():
+    if internet() and sys.platform == 'win32':
+        upgrade_pip()
+        banner()
+        sys_info()
+        selected_option = 16
+
+        selected_module_type = module_types[selected_option]
+
+        if selected_module_type:
+            print(f"\nSelected Module Type: {selected_module_type}")
+            print("Modules:")
+            modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+            for i, module in enumerate(modules, 1):
+                print(f"{i}. {module}")
+
+            install_option = input(
+                "Do you want to install all modules in this section? (Yes/No): ").lower()
+            clear()
+            if install_option in ["yes", "y"]:
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+
+                for module in modules:
+                    clear()
+                    command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {module}"
+                    os.system(command)
+                    log_mod(selected_module_type, module, python_folder)
+
+                print("\nAll modules installed successfully.")
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+            else:
+                print("Modules:")
+                modules = globals()[
+                selected_module_type.lower().replace(" ", "_")]
+                for i, module in enumerate(modules, 1):
+                    print(f"{i}. {module}")
+
+                module_index = int(input(
+                    "Enter the number corresponding to the module to install (type '0' to exit): "))
+
+                if module_index == 0:
+                    print(
+                        "\nReload this program to install new modules of Python.")
+                    sys.exit()
+
+                selected_module = modules[module_index - 1]
+
+                versions = os.listdir(
+                    f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Python")
+
+                if len(versions) == 2:
+                    print(f"\nYou have two folders in your Python installation:")
+                    print("(1)", versions[0])
+                    print("(2)", versions[1])
+                    python_folder = versions[int(
+                        input("Select your Python folder (1 or 2): ")) - 1]
+                else:
+                    python_folder = str(*versions)
+                command = f"cd C:\\Users\\{user}\\AppData\\Local\\Programs\\Python\\{python_folder}\\Scripts && pip.exe install {selected_module}"
+                os.system(command)
+
+                more = input("Do you want to install more? (Yes/No): ")
+                if more.lower() in ["no", "n"]:
+                    print(f"{user} Thank you for using.")
+                    sys.exit()
+                elif more.lower() in ["yes", "y"]:
+                    installer()
+                    
+    elif internet() and sys.platform == "linux":
+        banner()
+        console = Console()
+        console.print(" \t This program is designed to run on Windows systems only.", style="bold yellow")
+          
+    else:
+        banner_nointernet()
+
+
 def run():
-    installer()
+    installer()   

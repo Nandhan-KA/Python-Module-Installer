@@ -51,6 +51,23 @@ pymodins.install_build_modules()
 #install Jupyter Modules
 pymodins.install_jupyter_modules()
 
+#install data visualization modules
+pymodins.install_data_visualization_modules()
+
+#install database modules
+pymodins.install_database_modules()
+
+#install CyberSecurity modules
+pymodins.install_CyberSecurity_modules()
+
+#install cloudcomputing modules
+pymodins.install_cloudcomputing_modules()
+
+#install devops modules
+pymodins.install_devops_modules()
+
+#install bigdata modules
+pymodins.install_bigdata_modules()
 ```
 
 ## Contributing
@@ -102,7 +119,7 @@ SOFTWARE.
 Creator: Nandhan K
 Github: @github.com/Nandhan-KA
 System Platform: win32
-Python verion: 3.8.0 (tags/v3.8.0:fa919fd, Oct 14 2019, 19:37:50) [MSC v.1916 64 bit (AMD64)]
+Python version: 3.8.0 (tags/v3.8.0:fa919fd, Oct 14 2019, 19:37:50) [MSC v.1916 64 bit (AMD64)]
 pip version: pip 24.0 from c:\users\{username}\appdata\local\programs\python\python38\lib\site-packages\pip (python 3.8)
 
 Please select the type of modules you want to install:
@@ -117,6 +134,12 @@ Please select the type of modules you want to install:
 8. Network Modules
 9. Build Modules
 10. Jupyter Modules
+11. Data Visualization Modules
+12. Database Modules
+13. Cybersecurity Modules
+14. Cloud Computing Modules
+15. DevOps Modules
+16. Big Data Modules
 
 Enter the number corresponding to your choice: 
 ```
