@@ -3,12 +3,11 @@ import getpass
 import sys
 import pip
 import urllib.request
-from datetime import datetime
 import subprocess
 import ctypes
 import webbrowser
-import pymsgbox
 from rich.console import Console
+from datetime import datetime
 
 user = getpass.getuser()
 
@@ -36,7 +35,7 @@ def banner():
   |  ___/   \ \/ /     | |\  /| | | |   | | | |  | | | |    | |\ \| |   _.____`.  
  _| |_      _|  |_    _| |_\/_| |_\  `-'  /_| |_.' /_| |_  _| |_\   |_ | \____) | 
 |_____|    |______|  |_____||_____|`.___.'|______.'|_____||_____|\____| \______.' 
-                                                                                
+                                                                       V_2.1.1         
     """
     console.print(ascii_art, style="bold yellow")
     console.print("Creator: Nandhan K", style="bold cyan")
@@ -51,7 +50,7 @@ def banner_nointernet():
   |  ___/   \ \/ /     | |\  /| | | |   | | | |  | | | |    | |\ \| |   _.____`.  
  _| |_      _|  |_    _| |_\/_| |_\  `-'  /_| |_.' /_| |_  _| |_\   |_ | \____) | 
 |_____|    |______|  |_____||_____|`.___.'|______.'|_____||_____|\____| \______.' 
-                                                                                
+                                                                       V_2.1.1         
     """
     console.print(ascii_art, style="bold yellow")
     console.print("\t Creator: Nandhan K", style="bold cyan")
@@ -340,7 +339,6 @@ def installer():
 
                     for module in modules:
                         if module == 'dlib':
-                            pymsgbox.alert("This Modules Required VSBuild Tools")
                             print("Module dlib has to be installed after you have installed visual studio build tools")
                             x = input("Do you want to install VS Build Tools? (y/n): ").lower()
                             if x == "y":
@@ -351,7 +349,6 @@ def installer():
                                     continue  
                         
                         if module == 'rust':
-                            pymsgbox.alert("This Modules Required VSBuild Tools")
                             print("Module rust needs to be installed separately.")
                             x = input("Do you want to install Rust? (y/n): ").lower()
                             if x == "y":
@@ -1047,7 +1044,6 @@ def install_computervision_modules():
 
                 for module in modules:
                     if module == 'dlib':
-                        pymsgbox.alert("This Modules Required VSBuild Tools")
                         print("Module dlib has to be installed after you have installed visual studio build tools")
                         x = input("Do you want to install VS Build Tools? (y/n): ").lower()
                         if x == "y":
@@ -1098,7 +1094,6 @@ def install_computervision_modules():
                     python_folder = str(*versions)
                     
                 if selected_module == 'dlib':
-                    pymsgbox.alert("This Modules Required VSBuild Tools")
                     print("Module dlib has to be installed after you have installed visual studio build tools")
                     x = input("Do you want to install VS Build Tools? (y/n): ").lower()
                     if x == "y":
@@ -1259,7 +1254,6 @@ def install_build_modules():
 
                 for module in modules:
                     if module == 'rust':
-                        pymsgbox.alert("This Modules Required VSBuild Tools")
                         print("Installing VSBuild Tools")
                         install_vscode_build_tools()
                         clear
@@ -1313,11 +1307,9 @@ def install_build_modules():
                     python_folder = str(*versions) 
                     
                 if selected_module == 'rust':
-                    pymsgbox.alert("This Modules Required VSBuild Tools")
                     print("Installing VSBuild Tools")
                     install_vscode_build_tools()
                     clear
-                    pymsgbox.alert("This Modules Required VSBuild Tools")
                     print("Module rust needs to be installed separately.")
                     x = input("Do you want to install Rust? (y/n): ").lower()
                     if x == "y":

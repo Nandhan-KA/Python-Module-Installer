@@ -1,10 +1,12 @@
 Metadata-Version: 2.1
 Name: pymodins
-Version: 2.0.10
+Version: 2.1.1
 Summary: A module to install various Python packages.
 Home-page: https://github.com/Nandhan-KA/pymodins
 Author: Nandhan K
 Author-email: nandhan2003alamelu@gmail.com
+Maintainer: Nandhan K
+Maintainer-email: nandhan2003alamelu@gmail.com
 Keywords: Python Module Installer,Python Package Installer,python modules installer,python package installer,Nandhan-KA,PYMODINS,pymodins
 Platform: win32
 Classifier: Programming Language :: Python :: 3
@@ -14,7 +16,6 @@ Requires-Python: >=3.6
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: rich
-Requires-Dist: pymsgbox
 
 # PYMODINS
 
